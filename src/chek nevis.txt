@@ -1,0 +1,131 @@
+copy of PL 
+
+import React, { Component } from "react";
+import Product from "../Products Component/Product";
+import style from "../ProductList Component/style.module.css";
+
+class ProductList extends Component {
+ 
+  state = {
+    products: [
+      { title: "react", price: "99$", id: 1, quantity: 1 },
+      { title: "Node js", price: "88$", id: 2, quantity: 2 },
+      { title: "Java Script", price: "77$", id: 3, quantity: 3 },
+    ],
+  };
+  // updating State
+  clickHandler = () => {
+    this.setState({
+      products: [
+        { title: "react", price: "990$", id: 1, quantity: 1 },
+        { title: "Node js", price: "880$", id: 2, quantity: 2 },
+        { title: "Java Script", price: "770$", id: 3, quantity: 3 },
+      ],
+    });
+  };
+
+  renderProduct = () => {
+    if (this.state.products.length !== 0) {
+      return (
+        <div className={style.productList}>
+          {this.state.products.map((prod, index) => {
+            return (
+              <Product
+                prd={prod}
+                key={index}
+                onDelete={() => this.deletHandler(prod.id)}
+                onIncrement={() => this.incrementHandler(prod.id)}
+                onDecrement={() => this.decrementHandler(prod.id)}
+                changeInput={(e) => this.changeHandler(e, prod.id)}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+  };
+
+  deletHandler = (id) => {
+    console.log(id);
+    const filteredProduct = this.state.products.filter((p) => p.id !== id);
+    console.log(filteredProduct);
+    this.setState({ products: filteredProduct });
+  };
+
+  incrementHandler = (id) => {
+    //   console.log(id)
+    const products = [...this.state.products];
+    const selectedItem = products.find((p) => p.id === id);
+    // console.log(selectedItem.quantity );
+    console.log(products);
+
+    selectedItem.quantity++;
+    this.setState({ products });
+  };
+
+  decrementHandler = (id) => {
+    console.log(id);
+
+    const ducts = [...this.state.products];
+    const selectedItem = ducts.find((p) => p.id === id);
+    // console.log(selectedItem);
+    // console.log(products);
+    if (selectedItem.quantity > 1) {
+      selectedItem.quantity--;
+      this.setState({ products: ducts });
+    } else {
+      const removeItem = ducts.filter((p) => p.id !== id);
+      console.log(removeItem);
+      this.setState({ products: removeItem });
+    }
+  };
+
+  changeHandler = (e, id) => {
+    console.log(e.target.value);
+    const products = [...this.state.products];
+    const selectedItem = products.find((p) => p.id === id);
+    selectedItem.title = e.target.value;
+    this.setState({ products });
+  };
+
+  render() {
+    return (
+      <div className={style.productList}>
+        {!this.state.products.length && <div> goto Shopping </div>}
+        {this.renderProduct()}
+        {/* <button onClick={this.clickHandler}> click Me for Update State</button> */}
+      </div>
+    );
+  }
+}
+
+export default ProductList;
+--------------------------------------------------------------------------------------
+cclone Product :  
+
+import style from './style.module.css'
+
+const Product = (props) => {
+    return ( 
+        <div   className={style.product} >
+            <p > product Name :   {props.prd.title} course </p>
+            <p> Price : {props.prd.price} </p>
+            <p className={style.qty} > {props.prd.quantity} </p>
+            <input className={style.input} type="text" onChange = {props.changeInput} value={props.prd.title} /> 
+            <button className=  {` ${style.btn}  ${props.prd.quantity === 1 && style.btnRemove} ` }     onClick={props.onDecrement }> {props.prd.quantity > 1 ? "-" : "dcr" } </button> 
+            <button className={style.btn} onClick={props.onIncrement }>  + </button> 
+            <button className={style.btn} onClick={props.onDelete }> **</button> 
+
+
+             </div>
+     );
+}
+ 
+export default Product ;
+-----------------------------------------------------------------------------------------
+
+
+  onRemove = {this.deletHandler()}
+        onIncrement= {this.incrementHandler()}
+        onDecrement ={this.decrementHandler()}
+        changeInput = {this.changeHandler()}

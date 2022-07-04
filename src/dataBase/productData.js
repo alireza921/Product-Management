@@ -1,0 +1,38 @@
+export const productData = [
+  {
+    id: 1,
+    quantity: 4,
+    size: ["XS", "M", "XL", "XXL"],
+    price: "23$",
+    title: "MCCO4rrQ3h",
+    online: false,
+    picture: "https://picsum.photos/seed/50/60/60",
+  },
+  {
+    id: 2,
+    quantity: 5,
+    size: ["L","XL", "XXL"],
+    price: "68$",
+    title: "kIfSa6kPqH",
+    online: true,
+    picture: "https://picsum.photos/seed/36/60/60",
+  },
+  {
+    id: 3,
+    quantity: 5,
+    size: ["S", "M", "L", "XXL"],
+    price: "35$",
+    title: "mVF6AYhDmy",
+    online: false,
+    picture: "https://picsum.photos/seed/74/60/60",
+  },
+  { title: "react", price: "99$", id: 4, quantity: 8, size: ["XS", "M", "XXL"] },
+  { title: "Node js", price: "88$", id: 5, quantity: 3, size: ["XS", "XXL"] },
+  {
+    title: "Java Script",
+    price: "77$",
+    id: 6,
+    quantity: 3,
+    size: ["XS", "S", "M", "L", "XXL"],
+  },
+];
