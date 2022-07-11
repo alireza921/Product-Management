@@ -3,12 +3,7 @@ import { User2Context, UserContext } from "../App Component/App";
 import style from "./style.module.css";
 import { FaTrash } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
-const Product = ({ prd, changeInput, onDecrement, onDelete, onIncrement }) => {
-  //   console.log("product mount ");
-  //   useEffect(() => {
-  //       console.log("use efect - product.js");
-  //       return () => { console.log("unmount cmp ! use efect ");}
-  //   },[])
+const Product = ({ prd, onDecrement, onDelete, onIncrement }) => {
 
   return (
     <div className={style.product}>
@@ -17,12 +12,6 @@ const Product = ({ prd, changeInput, onDecrement, onDelete, onIncrement }) => {
         <p> Price : {prd.price} </p>
       </div>
       <p className={style.qty}> {prd.quantity} </p>
-      {/* <input
-        className={style.input}
-        type='text'
-        onChange={changeInput}
-        value={prd.title}
-      /> */}
       <div className={style.btnContainer}>
         <button
           className={` ${style.btn}  ${prd.quantity === 1 && style.btnRemove} `}

@@ -2,15 +2,14 @@ import { useState } from "react";
 import { useProductAction } from "../../product provider/productProvider";
 import style from "../searchBar/style.module.css";
 
-const SearchBar = ({ filtered }) => {
+const SearchBar = ({ filter }) => {
   const [search, setSearch] = useState("");
   const dispatch = useProductAction();
   const searchHandler = (e) => {
-    // console.log(e.target.value)
     setSearch(e.target.value);
+    dispatch({ type: "filter", selectedOption: filter });
     dispatch({ type: "search", event: e });
-    dispatch({ type: "filter", selectedOption: filtered });
-    console.log(filtered);
+    console.log(filter);
   };
   return (
     <div className={style.container}>
@@ -19,7 +18,7 @@ const SearchBar = ({ filtered }) => {
         type='text'
         onChange={searchHandler}
         value={search}
-        placeholder='search for ... '
+        placeholder='search by title ... '
       />
     </div>
   );

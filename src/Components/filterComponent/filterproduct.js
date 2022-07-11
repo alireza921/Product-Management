@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useProductAction } from "../product provider/productProvider";
 import React from "react";
-import Select from "react-select";
 import style from "./style.module.css";
 import SelectComponent from "../common/selectComponent/selectComponent";
 import SearchBar from "../common/searchBar/searchComponent";
@@ -31,17 +30,16 @@ const Filter = () => {
     dispatch({ type: "filter", selectedOption });
     dispatch({ type: "sort", selectedOption: sort });
 
-    // console.log(selectedOption);
   };
 
   const sortHandler = (selectedOption) => {
-    // console.log(selectedOption);
     setSort(selectedOption);
     dispatch({ type: "sort", selectedOption });
   };
 
   return (
     <div>
+      <SearchBar filter={filter}/>
       <div className={style.container}>
         <SelectComponent
           title={"filtered by the Size ... : "}
@@ -54,7 +52,7 @@ const Filter = () => {
           value={sort}
           option={sortOption}
           onChange={sortHandler}
-          title='we sort By price ... : '
+          title='sort By price ... : '
         />
       </div>
     </div>

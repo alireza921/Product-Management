@@ -127,7 +127,6 @@ const reducer = (state, action) => {
       if (value === "") {
         return productData;
       } else {
-        // console.log(action.event.target.value)
         const updatedProduct = productData.filter(
           (p) => p.size.indexOf(value) >= 0
         );
@@ -149,8 +148,6 @@ const reducer = (state, action) => {
 
     case "search": {
       const value = action.event.target.value;
-      // console.log(selectedOption);
-      // const products = [...productData]
       if (value === "") {
         return productData;
       } else {
@@ -170,7 +167,6 @@ const reducer = (state, action) => {
 
 const ProductProvider = ({ children }) => {
   const [products, dispatch] = useReducer(reducer, productData);
-
   return (
     <ProductContext.Provider value={products}>
       <ProductContextDispatcher.Provider value={dispatch}>

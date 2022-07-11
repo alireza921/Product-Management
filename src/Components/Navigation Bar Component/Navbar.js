@@ -1,5 +1,6 @@
 import { useProduct } from "../product provider/productProvider";
 import './style.css'
+
 const NavBar = () => {
   const products = useProduct();
   const totalItem = products.filter((p) => p.quantity > 0).length;
