@@ -6,7 +6,9 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.container h3 { 
+    min-width: 40%;
+}
 .select { 
     width: 300px;
 }

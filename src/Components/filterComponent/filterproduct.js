@@ -43,7 +43,6 @@ const Filter = () => {
   return (
     <div>
       <div className={style.container}>
-        <SearchBar filtered={filter} />
         <SelectComponent
           title={"filtered by the Size ... : "}
           onChange={filterHandler}
